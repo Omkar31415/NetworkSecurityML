@@ -4,6 +4,8 @@ numpy
 pymongo
 certifi
 scikit-learn
+pyaml
+dill
 
 # This refers to setup.py
 #-e . 
