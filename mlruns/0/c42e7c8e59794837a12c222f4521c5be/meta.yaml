@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/vulla/Downloads/NetworkSecurityML/mlruns/0/c42e7c8e59794837a12c222f4521c5be/artifacts
+end_time: 1740409647979
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c42e7c8e59794837a12c222f4521c5be
+run_name: luminous-tern-5
+run_uuid: c42e7c8e59794837a12c222f4521c5be
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740409643059
+status: 3
+tags: []
+user_id: vulla

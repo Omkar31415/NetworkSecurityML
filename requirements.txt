@@ -6,6 +6,7 @@ certifi
 scikit-learn
 pyaml
 dill
+mlflow
 
 # This refers to setup.py
 #-e . 
