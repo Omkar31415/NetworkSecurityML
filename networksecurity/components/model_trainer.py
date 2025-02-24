@@ -26,7 +26,10 @@ from sklearn.ensemble import (
 import mlflow
 from urllib.parse import urlparse
 
-#import dagshub
+import dagshub
+#Now if mlruns executes now it gets created in dagshub remote repo
+#It's gets access to it's api so it can read/write the remote repo from here
+dagshub.init(repo_owner='Omkar31415', repo_name='NetworkSecurityML', mlflow=True)
 
 class ModelTrainer:
     def __init__(self,model_trainer_config:ModelTrainerConfig,data_transformation_artifact:DataTransformationArtifact):
@@ -112,6 +115,8 @@ class ModelTrainer:
             Network_model=NetworkModel(preprocessor=preprocessor,model=best_model)
             save_object(self.model_trainer_config.trained_model_file_path,obj=Network_model)
             
+            #Save final best model in particular folder
+            save_object('final_model/model.pkl',best_model)
             #model trainer artifact
             model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
                                  train_metric_artifact=classification_train_metric,
