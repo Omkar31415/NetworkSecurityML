@@ -28,7 +28,7 @@ from urllib.parse import urlparse
 
 import dagshub
 #Now if mlruns executes now it gets created in dagshub remote repo
-#It's gets access to it's api so it can read/write the remote repo from here
+#It gets access to it's api so it can read/write the remote repo from here using this command
 dagshub.init(repo_owner='Omkar31415', repo_name='NetworkSecurityML', mlflow=True)
 
 class ModelTrainer:
@@ -121,7 +121,7 @@ class ModelTrainer:
             model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
                                  train_metric_artifact=classification_train_metric,
                                  test_metric_artifact=classification_test_metric)
-            logging.info("Model trainer artifact: ",model_trainer_artifact)
+            logging.info(f"Model trainer artifact: {model_trainer_artifact}")
             return model_trainer_artifact
         except Exception as e:
             raise NetworkSecurityException(e,sys)

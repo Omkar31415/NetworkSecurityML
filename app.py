@@ -1,6 +1,8 @@
-import sys,os
+import sys
+import os
+
 import certifi
-ca=certifi.where()
+ca = certifi.where()
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -18,10 +20,10 @@ from fastapi.responses import Response
 from starlette.responses import RedirectResponse
 import pandas as pd
 
-
 from networksecurity.utils.main_utils.utils import load_object
 
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
+
 
 client = pymongo.MongoClient(mongo_db_url, tlsCAFile=ca)
 
@@ -32,7 +34,7 @@ database = client[DATA_INGESTION_DATABASE_NAME]
 collection = database[DATA_INGESTION_COLLECTION_NAME]
 
 app = FastAPI()
-origins = ["*"] #able to access in browser
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -43,7 +45,7 @@ app.add_middleware(
 )
 
 from fastapi.templating import Jinja2Templates
-templates = Jinja2Templates(directory="./templates") #used to read all the templates persent in mentioned folder dir
+templates = Jinja2Templates(directory="./templates")
 
 @app.get("/", tags=["authentication"])
 async def index():
@@ -54,7 +56,7 @@ async def train_route():
     try:
         train_pipeline=TrainingPipeline()
         train_pipeline.run_pipeline()
-        return Response("Training is successful!")
+        return Response("Training is successful")
     except Exception as e:
         raise NetworkSecurityException(e,sys)
     
@@ -62,6 +64,7 @@ async def train_route():
 async def predict_route(request: Request,file: UploadFile = File(...)):
     try:
         df=pd.read_csv(file.file)
+        #print(df)
         preprocesor=load_object("final_model/preprocessor.pkl")
         final_model=load_object("final_model/model.pkl")
         network_model = NetworkModel(preprocessor=preprocesor,model=final_model)
@@ -70,12 +73,16 @@ async def predict_route(request: Request,file: UploadFile = File(...)):
         print(y_pred)
         df['predicted_column'] = y_pred
         print(df['predicted_column'])
+        #df['predicted_column'].replace(-1, 0)
+        #return df.to_json()
         df.to_csv('prediction_output/output.csv')
         table_html = df.to_html(classes='table table-striped')
+        #print(table_html)
         return templates.TemplateResponse("table.html", {"request": request, "table": table_html})
         
     except Exception as e:
             raise NetworkSecurityException(e,sys)
+
     
-if __name__=='__main__':
-    app_run(app,host='localhost',port=0000) #starting point; 
+if __name__=="__main__":
+    app_run(app,host="0.0.0.0",port=8000)

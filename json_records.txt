@@ -154,4 +154,6 @@ Now, each dictionary in the list represents a website's phishing-related attribu
 
 This process **reshapes row-based data into a list of dictionaries**, making it easier to use in applications like machine learning models or APIs.
 
-Would you like me to optimize this process for better efficiency? 🚀
+AWS IAM
+Access key ID: AKIAZ5TC4YMTPUIHJXGV	
+Secret access key: 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
