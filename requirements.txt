@@ -8,6 +8,9 @@ pyaml
 dill
 mlflow
 dagshub
+fastapi
+uvicorn
+python-multipart
 
 # This refers to setup.py
 #-e . 
