@@ -153,7 +153,3 @@ Now, each dictionary in the list represents a website's phishing-related attribu
 6. **Convert to a list (`list(...)`)**.
 
 This process **reshapes row-based data into a list of dictionaries**, making it easier to use in applications like machine learning models or APIs.
-
-IaM
-key: AKIAZ5TC4YMTPUIHJXG #add V at last
-pass: TEeDWb/c7h2YPO88RMxsAYC1OwWv6kRrBvFIyNV #add w at last
