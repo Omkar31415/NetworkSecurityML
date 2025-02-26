@@ -15,3 +15,21 @@
 ![image](https://github.com/user-attachments/assets/4b65f0b9-7682-4830-9092-abc9298660e0)
 
 ![image](https://github.com/user-attachments/assets/435b1999-f7de-4ae5-88e2-94d6865f53d0)
+
+
+Docker Setup In EC2 commands to be Executed
+#optinal
+
+sudo apt-get update -y
+
+sudo apt-get upgrade
+
+#required
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
+
+sudo usermod -aG docker ubuntu
+
+newgrp docker
