@@ -17,8 +17,20 @@
 ![image](https://github.com/user-attachments/assets/435b1999-f7de-4ae5-88e2-94d6865f53d0)
 
 
+Initial Setup
+To create env:
+
+conda create -p venv python==3.10 -y
+
+conda activate venv\
+
+pip install -r requirements.txt
+
+python app.py
+
 Docker Setup In EC2 commands to be Executed
-#optinal
+
+#optional
 
 sudo apt-get update -y
 
@@ -33,3 +45,7 @@ sudo sh get-docker.sh
 sudo usermod -aG docker ubuntu
 
 newgrp docker
+
+#create a runner from settings->actions->runners and follow the prompts. enter 'self-hosted' as runnner name when prompted.
+
+Add a in-bound rules from network settings in instance, selecting port as 8080 and custom ip.
